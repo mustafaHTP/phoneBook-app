@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Core.Models
 {
-    public class PhoneNumber
+    public class PhoneNumber: BaseEntity
     {
         public int ContactId { get; set; }
         public Contact Contact { get; set; }
