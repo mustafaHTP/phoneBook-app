@@ -16,7 +16,7 @@ namespace PhoneBook.Repository.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
 
-            builder.Property(x => x.PhoneNo).IsRequired().HasMaxLength(10);
+            builder.Property(x => x.PhoneNo).IsRequired().HasMaxLength(11);
 
             //explicit way to show relation between Contact and PhoneNumber
             builder.HasOne(x => x.Contact).WithMany(x => x.PhoneNumbers).HasForeignKey(x => x.ContactId);

@@ -18,7 +18,7 @@ namespace PhoneBook.Repository.Seeds
                 {
                     Id = 1,
                     ContactId = 1,
-                    PhoneNo = "05426652233",
+                    PhoneNo = "05386221584",
                     CreatedDate = DateTime.Now
                 },
                 new PhoneNumber
