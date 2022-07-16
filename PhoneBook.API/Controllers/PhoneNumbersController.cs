@@ -7,12 +7,12 @@ using PhoneBook.Core.Services;
 
 namespace PhoneBook.API.Controllers
 {
-    public class PhoneNumberController : CustomBaseController
+    public class PhoneNumbersController : CustomBaseController
     {
         private readonly IMapper _mapper;
         private readonly IPhoneNumberService _phoneNumberService;
 
-        public PhoneNumberController(IMapper mapper, IPhoneNumberService phoneNumberService)
+        public PhoneNumbersController(IMapper mapper, IPhoneNumberService phoneNumberService)
         {
             _mapper = mapper;
             _phoneNumberService = phoneNumberService;
