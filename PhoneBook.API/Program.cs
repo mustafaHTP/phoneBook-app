@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PhoneBook.API.Filters;
+using PhoneBook.API.Middlewares;
 using PhoneBook.Core.Repositories;
 using PhoneBook.Core.Services;
 using PhoneBook.Core.UnitOfWorks;
@@ -67,6 +68,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Exception Middleware
+app.UserCustomException();
 
 app.UseAuthorization();
 
