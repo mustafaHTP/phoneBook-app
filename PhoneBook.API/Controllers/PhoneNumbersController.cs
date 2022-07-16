@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PhoneBook.API.Filters;
 using PhoneBook.Core.DTOs;
 using PhoneBook.Core.Models;
 using PhoneBook.Core.Services;
