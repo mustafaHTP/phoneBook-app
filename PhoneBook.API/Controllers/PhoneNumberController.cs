@@ -10,21 +10,30 @@ namespace PhoneBook.API.Controllers
     public class PhoneNumberController : CustomBaseController
     {
         private readonly IMapper _mapper;
-        private readonly IGenericService<PhoneNumber> _genericService;
+        private readonly IPhoneNumberService _phoneNumberService;
 
-        public PhoneNumberController(IMapper mapper, IGenericService<PhoneNumber> genericService)
+        public PhoneNumberController(IMapper mapper, IPhoneNumberService phoneNumberService)
         {
             _mapper = mapper;
-            _genericService = genericService;
+            _phoneNumberService = phoneNumberService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var phoneNumbers = await _genericService.GetAllAsync();
+            var phoneNumbers = await _phoneNumberService.GetAllAsync();
             var phoneNumberDtos = _mapper.Map<List<PhoneNumberDto>>(phoneNumbers.ToList());
 
             return CreateActionResult(CustomResponseDto<List<PhoneNumberDto>>.Success(200, phoneNumberDtos));
+
+        }
+
+        [HttpGet("GetPhoneNumbersWithContact")]
+        public async Task<IActionResult> GetPhoneNumbersWithContact()
+        {
+            var phoneNumbersWithContactDto = await _phoneNumberService.GetPhoneNumbersWihContactAsync();
+
+            return CreateActionResult(phoneNumbersWithContactDto);
 
         }
 
@@ -32,7 +41,7 @@ namespace PhoneBook.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var phoneNumber = await _genericService.GetByIdAsync(id);
+            var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
             var phoneNumberDto = _mapper.Map<PhoneNumberDto>(phoneNumber);
 
             return CreateActionResult(CustomResponseDto<PhoneNumberDto>.Success(200, phoneNumberDto));
@@ -42,7 +51,7 @@ namespace PhoneBook.API.Controllers
         public async Task<IActionResult> Save(PhoneNumberDto newPhoneNumberDto)
         {
             var phoneNumber = _mapper.Map<PhoneNumber>(newPhoneNumberDto);
-            await _genericService.AddAsync(phoneNumber);
+            await _phoneNumberService.AddAsync(phoneNumber);
 
             return CreateActionResult(CustomResponseDto<PhoneNumberDto>.Success(201, newPhoneNumberDto));
         }
@@ -51,7 +60,7 @@ namespace PhoneBook.API.Controllers
         public async Task<IActionResult> Update(PhoneNumberDto newPhoneNumberDto)
         {
             var phoneNumber = _mapper.Map<PhoneNumber>(newPhoneNumberDto);
-            await _genericService.UpdateAsync(phoneNumber);
+            await _phoneNumberService.UpdateAsync(phoneNumber);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
@@ -59,8 +68,8 @@ namespace PhoneBook.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
-            var phoneNumber = await _genericService.GetByIdAsync(id);
-            await _genericService.RemoveAsync(phoneNumber);
+            var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
+            await _phoneNumberService.RemoveAsync(phoneNumber);
 
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }

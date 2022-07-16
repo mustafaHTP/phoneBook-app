@@ -20,6 +20,8 @@ builder.Services.AddSwaggerGen();
 
 //Add SCOPE
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPhoneNumberRepository, PhoneNumberRepository>();
+builder.Services.AddScoped<IPhoneNumberService, PhoneNumberService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 //AutoMapper

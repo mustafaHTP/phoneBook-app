@@ -18,7 +18,8 @@ namespace PhoneBook.Service.Mapping
 
             //CreateMap<PhoneNumberUpdateDto, PhoneNumber>();
             CreateMap<PhoneNumber, PhoneNumberUpdateDto>().ReverseMap();
-
+            CreateMap<PhoneNumber, PhoneNumbersWithContactDto>();
+           
         }
     }
 }
