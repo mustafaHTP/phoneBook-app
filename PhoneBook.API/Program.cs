@@ -5,6 +5,8 @@ using PhoneBook.Core.UnitOfWorks;
 using PhoneBook.Repository;
 using PhoneBook.Repository.Repositories;
 using PhoneBook.Repository.UnitOfWorks;
+using PhoneBook.Service.Mapping;
+using PhoneBook.Service.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +21,9 @@ builder.Services.AddSwaggerGen();
 //Add SCOPE
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-//builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 //Sql Connection
 builder.Services.AddDbContext<AppDbContext>(x =>

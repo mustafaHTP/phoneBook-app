@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Core.Models
+namespace PhoneBook.Core.DTOs
 {
     public class ContactDto : BaseDto
     {

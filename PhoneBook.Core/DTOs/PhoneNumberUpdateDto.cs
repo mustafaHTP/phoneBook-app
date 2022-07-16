@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Core.DTOs
 {
-    public class PhoneNumberDto: BaseDto
+    public class PhoneNumberUpdateDto:BaseDto
     {
         public int ContactId { get; set; }
         public string PhoneNo { get; set; }
