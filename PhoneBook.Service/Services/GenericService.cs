@@ -2,6 +2,7 @@
 using PhoneBook.Core.Repositories;
 using PhoneBook.Core.Services;
 using PhoneBook.Core.UnitOfWorks;
+using PhoneBook.Service.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,12 @@ namespace PhoneBook.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _genericRepository.GetByIdAsync(id);
+            var hasModel = await _genericRepository.GetByIdAsync(id);
+            if(hasModel == null)
+            {
+                throw new NotFoundException($"{typeof(T).Name} ({id}) not found");
+            }
+            return hasModel;
         }
 
         public async Task RemoveAsync(T entity)
