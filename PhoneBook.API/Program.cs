@@ -37,6 +37,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 });
 
 //Add SCOPE
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPhoneNumberRepository, PhoneNumberRepository>();
 builder.Services.AddScoped<IPhoneNumberService, PhoneNumberService>();

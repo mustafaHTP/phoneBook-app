@@ -39,6 +39,7 @@ namespace PhoneBook.API.Controllers
         }
 
         //www.site.com/api/products/5
+        [ServiceFilter(typeof(NotFoundFilter<PhoneNumber>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
