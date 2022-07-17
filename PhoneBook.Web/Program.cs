@@ -1,13 +1,21 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using PhoneBook.Repository;
 using PhoneBook.Service.Mapping;
+using PhoneBook.Service.Validations;
 using PhoneBook.Web.Modules;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Validate Filter Attribute
+//Add FluentValidation
+builder.Services.AddControllers()
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PhoneNumberDtoValidator>());
+builder.Services.AddControllers()
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ContactDtoValidator>());
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
