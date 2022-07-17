@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace PhoneBook.Core.Repositories
 {
@@ -15,7 +10,7 @@ namespace PhoneBook.Core.Repositories
         // productRepository.where(x => x.id > 5). after tolist make a query
         // productRepository.where(x => x.id > 5).OrderBy().ToListAsync();
         // IQueryable objects, is not going to be queried, in memory
-        IQueryable<T> Where(Expression<Func<T,bool>> expression);
+        IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
 
         Task AddAsync(T entity);

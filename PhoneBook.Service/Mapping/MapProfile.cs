@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using PhoneBook.Core.DTOs;
 using PhoneBook.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook.Service.Mapping
 {
-    public class MapProfile:Profile
+    public class MapProfile : Profile
     {
         public MapProfile()
         {
@@ -20,7 +15,7 @@ namespace PhoneBook.Service.Mapping
             CreateMap<PhoneNumber, PhoneNumberUpdateDto>().ReverseMap();
             CreateMap<PhoneNumber, PhoneNumbersWithContactDto>();
             CreateMap<Contact, ContactWithPhoneNumbersDto>();
-           
+
         }
     }
 }

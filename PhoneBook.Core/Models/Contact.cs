@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhoneBook.Core.Models
 {
@@ -10,6 +6,14 @@ namespace PhoneBook.Core.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
         public string Email { get; set; }
         public string Profession { get; set; }
         public string Address { get; set; }

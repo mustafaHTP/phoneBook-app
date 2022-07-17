@@ -4,11 +4,6 @@ using PhoneBook.Core.Models;
 using PhoneBook.Core.Repositories;
 using PhoneBook.Core.Services;
 using PhoneBook.Core.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook.Service.Services
 {

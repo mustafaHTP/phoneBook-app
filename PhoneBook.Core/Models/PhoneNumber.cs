@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PhoneBook.Core.Models
+﻿namespace PhoneBook.Core.Models
 {
-    public class PhoneNumber: BaseEntity
+    public class PhoneNumber : BaseEntity
     {
         public int ContactId { get; set; }
         public Contact Contact { get; set; }

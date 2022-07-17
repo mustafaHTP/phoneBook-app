@@ -7,12 +7,7 @@ using PhoneBook.Core.Repositories;
 using PhoneBook.Core.Services;
 using PhoneBook.Core.UnitOfWorks;
 using PhoneBook.Service.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook.Caching
 {
@@ -31,7 +26,7 @@ namespace PhoneBook.Caching
             _unitOfWork = unitOfWork;
             _memoryCache = memoryCache;
 
-            if(!_memoryCache.TryGetValue(CachePhoneNumberKey, out _))
+            if (!_memoryCache.TryGetValue(CachePhoneNumberKey, out _))
             {
                 _memoryCache.Set(CachePhoneNumberKey, _phoneNumberRepository.GetPhoneNumbersWihContactAsync().Result);
             }
@@ -70,7 +65,7 @@ namespace PhoneBook.Caching
         public Task<PhoneNumber> GetByIdAsync(int id)
         {
             var phoneNumber = _memoryCache.Get<List<PhoneNumber>>(CachePhoneNumberKey).FirstOrDefault(x => x.Id == id);
-            if(phoneNumber == null)
+            if (phoneNumber == null)
             {
                 throw new NotFoundException($"{typeof(PhoneNumber).Name} ({id}) not found");
             }

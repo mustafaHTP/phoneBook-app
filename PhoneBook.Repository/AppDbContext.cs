@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhoneBook.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBook.Repository
 {
@@ -21,9 +16,9 @@ namespace PhoneBook.Repository
         //add Updated/Created Date to entity
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach(var item in ChangeTracker.Entries())
+            foreach (var item in ChangeTracker.Entries())
             {
-                if(item.Entity is BaseEntity entityReference)
+                if (item.Entity is BaseEntity entityReference)
                 {
                     switch (item.State)
                     {
