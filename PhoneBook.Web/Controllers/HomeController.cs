@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneBook.Web.Models;
-using System.Diagnostics;
+using PhoneBook.Core.DTOs;
 
 namespace PhoneBook.Web.Controllers
 {
@@ -24,9 +23,9 @@ namespace PhoneBook.Web.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(ErrorViewModel errorViewModel)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(errorViewModel);
         }
     }
 }

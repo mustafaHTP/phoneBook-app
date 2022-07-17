@@ -16,4 +16,8 @@
     <ProjectReference Include="..\PhoneBook.Service\PhoneBook.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using PhoneBook.Repository;
 using PhoneBook.Service.Mapping;
 using PhoneBook.Service.Validations;
+using PhoneBook.Web.Filters;
 using PhoneBook.Web.Modules;
 using System.Reflection;
 
@@ -19,7 +20,10 @@ builder.Services.AddControllers()
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//AutoMapper
 builder.Services.AddAutoMapper(typeof(MapProfile));
+
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
 //Sql Connection
 builder.Services.AddDbContext<AppDbContext>(x =>

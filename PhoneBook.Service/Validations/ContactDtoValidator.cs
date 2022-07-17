@@ -3,7 +3,7 @@ using PhoneBook.Core.DTOs;
 
 namespace PhoneBook.Service.Validations
 {
-    public class ContactDtoValidator : AbstractValidator<ContactDto>
+    public class ContactDtoValidator : AbstractValidator<ContactViewModel>
     {
         public ContactDtoValidator()
         {

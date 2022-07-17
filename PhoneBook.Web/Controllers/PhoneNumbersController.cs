@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PhoneBook.Core.DTOs;
 using PhoneBook.Core.Models;
 using PhoneBook.Core.Services;
+using PhoneBook.Web.Filters;
 
 namespace PhoneBook.Web.Controllers
 {
@@ -28,7 +29,7 @@ namespace PhoneBook.Web.Controllers
         public async Task<IActionResult> Save()
         {
             var contacts = await _contactService.GetAllAsync();
-            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+            var contactDtos = _mapper.Map<List<ContactViewModel>>(contacts.ToList());
 
             ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName");
 
@@ -36,7 +37,7 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(PhoneNumberDto phoneNumberDto)
+        public async Task<IActionResult> Save(PhoneNumberViewModel phoneNumberDto)
         {
             if (ModelState.IsValid)
             {
@@ -47,39 +48,39 @@ namespace PhoneBook.Web.Controllers
 
             }
             var contacts = await _contactService.GetAllAsync();
-            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+            var contactDtos = _mapper.Map<List<ContactViewModel>>(contacts.ToList());
 
             ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName");
 
             return View();
         }
 
-
+        [ServiceFilter(typeof(NotFoundFilter<PhoneNumber>))]
         public async Task<IActionResult> Update(int id)
         {
             var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
 
             var contacts = await _contactService.GetAllAsync();
-            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+            var contactDtos = _mapper.Map<List<ContactViewModel>>(contacts.ToList());
 
             ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName", phoneNumber.ContactId);
 
-            return View(_mapper.Map<PhoneNumberDto>(phoneNumber));
+            return View(_mapper.Map<PhoneNumberViewModel>(phoneNumber));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(PhoneNumberDto phoneNumberDto)
+        public async Task<IActionResult> Update(PhoneNumberViewModel phoneNumberDto)
         {
             if (ModelState.IsValid)
             {
                 var phoneNumber = _mapper.Map<PhoneNumber>(phoneNumberDto);
                 await _phoneNumberService.UpdateAsync(phoneNumber);
-                
+
                 return RedirectToAction(nameof(Index));
             }
 
             var contacts = await _contactService.GetAllAsync();
-            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+            var contactDtos = _mapper.Map<List<ContactViewModel>>(contacts.ToList());
 
             ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName", phoneNumberDto.ContactId);
 

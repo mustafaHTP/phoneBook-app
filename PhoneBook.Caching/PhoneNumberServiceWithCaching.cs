@@ -72,10 +72,10 @@ namespace PhoneBook.Caching
             return Task.FromResult(phoneNumber);
         }
 
-        public Task<List<PhoneNumbersWithContactDto>> GetPhoneNumbersWihContactAsync()
+        public Task<List<PhoneNumbersWithContactViewModel>> GetPhoneNumbersWihContactAsync()
         {
             var phoneNumbers = _memoryCache.Get<IEnumerable<List<PhoneNumber>>>(CachePhoneNumberKey);
-            var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactDto>>(phoneNumbers);
+            var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactViewModel>>(phoneNumbers);
 
             return Task.FromResult(phoneNumbersWithContactDto);
         }

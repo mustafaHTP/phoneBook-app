@@ -17,10 +17,10 @@ namespace PhoneBook.Service.Services
             _mapper = mapper;
         }
 
-        public async Task<List<PhoneNumbersWithContactDto>> GetPhoneNumbersWihContactAsync()
+        public async Task<List<PhoneNumbersWithContactViewModel>> GetPhoneNumbersWihContactAsync()
         {
             var phoneNumbersWithContact = await _phoneNumberRepository.GetPhoneNumbersWihContactAsync();
-            var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactDto>>(phoneNumbersWithContact);
+            var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactViewModel>>(phoneNumbersWithContact);
 
             return phoneNumbersWithContactDto;
         }

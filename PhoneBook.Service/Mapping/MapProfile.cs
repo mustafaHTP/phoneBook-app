@@ -8,13 +8,11 @@ namespace PhoneBook.Service.Mapping
     {
         public MapProfile()
         {
-            CreateMap<Contact, ContactDto>().ReverseMap();
-            CreateMap<PhoneNumber, PhoneNumberDto>().ReverseMap();
+            CreateMap<Contact, ContactViewModel>().ReverseMap();
+            CreateMap<PhoneNumber, PhoneNumberViewModel>().ReverseMap();
 
-            //CreateMap<PhoneNumberUpdateDto, PhoneNumber>();
-            CreateMap<PhoneNumber, PhoneNumberUpdateDto>().ReverseMap();
-            CreateMap<PhoneNumber, PhoneNumbersWithContactDto>();
-            CreateMap<Contact, ContactWithPhoneNumbersDto>();
+            CreateMap<PhoneNumber, PhoneNumbersWithContactViewModel>();
+            CreateMap<Contact, ContactWithPhoneNumbersViewModel>();
 
         }
     }

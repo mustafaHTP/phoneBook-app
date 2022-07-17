@@ -1,6 +1,6 @@
 ﻿namespace PhoneBook.Core.DTOs
 {
-    public class ContactDto : BaseDto
+    public class ContactViewModel : BaseViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

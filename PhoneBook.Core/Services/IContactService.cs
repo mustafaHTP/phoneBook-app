@@ -5,6 +5,6 @@ namespace PhoneBook.Core.Services
 {
     public interface IContactService : IGenericService<Contact>
     {
-        Task<CustomResponseDto<ContactWithPhoneNumbersDto>> GetSingleContactByIdWithPhoneNumbersAsync(int contactId);
+        Task<CustomResponseViewModel<ContactWithPhoneNumbersViewModel>> GetSingleContactByIdWithPhoneNumbersAsync(int contactId);
     }
 }

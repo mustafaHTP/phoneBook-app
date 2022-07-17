@@ -18,12 +18,12 @@ namespace PhoneBook.Service.Services
             _mapper = mapper;
         }
 
-        public async Task<CustomResponseDto<ContactWithPhoneNumbersDto>> GetSingleContactByIdWithPhoneNumbersAsync(int contactId)
+        public async Task<CustomResponseViewModel<ContactWithPhoneNumbersViewModel>> GetSingleContactByIdWithPhoneNumbersAsync(int contactId)
         {
             var contactWithPhoneNumbers = await _contactRepository.GetSingleContactByIdWithPhoneNumbersAsync(contactId);
-            var contactWithPhoneNumbersDto = _mapper.Map<ContactWithPhoneNumbersDto>(contactWithPhoneNumbers);
+            var contactWithPhoneNumbersDto = _mapper.Map<ContactWithPhoneNumbersViewModel>(contactWithPhoneNumbers);
 
-            return CustomResponseDto<ContactWithPhoneNumbersDto>.Success(200, contactWithPhoneNumbersDto);
+            return CustomResponseViewModel<ContactWithPhoneNumbersViewModel>.Success(200, contactWithPhoneNumbersDto);
         }
     }
 }
