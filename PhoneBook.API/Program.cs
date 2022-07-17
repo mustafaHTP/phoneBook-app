@@ -26,6 +26,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Memory Cache
+builder.Services.AddMemoryCache();
+
 //Validate Filter Attribute
 //Add FluentValidation
 builder.Services.AddControllers(options => { options.Filters.Add(new ValidateFilterAttribute()); })
@@ -55,6 +58,7 @@ builder.Services.AddDbContext<AppDbContext>(x =>
         options.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     });
 });
+
 
 //Autofac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());

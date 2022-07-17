@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Service.Services
 {
-    public class PhoneNumberService : GenericService<PhoneNumber>, IPhoneNumberService
+    public class PhoneNumberServiceWithNoCaching : GenericService<PhoneNumber>, IPhoneNumberService
     {
         private readonly IPhoneNumberRepository _phoneNumberRepository;
         private readonly IMapper _mapper;
-        public PhoneNumberService(IGenericRepository<PhoneNumber> genericRepository, IUnitOfWork unitOfWork, IPhoneNumberRepository phoneNumberRepository, IMapper mapper) : base(genericRepository, unitOfWork)
+        public PhoneNumberServiceWithNoCaching(IGenericRepository<PhoneNumber> genericRepository, IUnitOfWork unitOfWork, IPhoneNumberRepository phoneNumberRepository, IMapper mapper) : base(genericRepository, unitOfWork)
         {
             _phoneNumberRepository = phoneNumberRepository;
             _mapper = mapper;

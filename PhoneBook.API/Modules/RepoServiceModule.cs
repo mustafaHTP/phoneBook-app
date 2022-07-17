@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using PhoneBook.Caching;
 using PhoneBook.Core.Repositories;
 using PhoneBook.Core.Services;
 using PhoneBook.Core.UnitOfWorks;
@@ -35,8 +36,8 @@ namespace PhoneBook.API.Modules
                 Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).
                 Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
-            
-            
+
+            builder.RegisterType<PhoneNumberServiceWithCaching>().As<IPhoneNumberService>();
 
         }
     }
