@@ -49,9 +49,49 @@ namespace PhoneBook.Web.Controllers
             var contacts = await _contactService.GetAllAsync();
             var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
 
-            ViewBag.Contacts = new SelectList(contactDtos, "Id", "FirstName");
+            ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName");
 
             return View();
+        }
+
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
+
+            var contacts = await _contactService.GetAllAsync();
+            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+
+            ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName", phoneNumber.ContactId);
+
+            return View(_mapper.Map<PhoneNumberDto>(phoneNumber));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(PhoneNumberDto phoneNumberDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var phoneNumber = _mapper.Map<PhoneNumber>(phoneNumberDto);
+                await _phoneNumberService.UpdateAsync(phoneNumber);
+                
+                return RedirectToAction(nameof(Index));
+            }
+
+            var contacts = await _contactService.GetAllAsync();
+            var contactDtos = _mapper.Map<List<ContactDto>>(contacts.ToList());
+
+            ViewBag.Contacts = new SelectList(contactDtos, "Id", "FullName", phoneNumberDto.ContactId);
+
+            return View(phoneNumberDto);
+        }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
+            await _phoneNumberService.RemoveAsync(phoneNumber);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
