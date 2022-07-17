@@ -77,12 +77,12 @@ namespace PhoneBook.Caching
             return Task.FromResult(phoneNumber);
         }
 
-        public Task<CustomResponseDto<List<PhoneNumbersWithContactDto>>> GetPhoneNumbersWihContactAsync()
+        public Task<List<PhoneNumbersWithContactDto>> GetPhoneNumbersWihContactAsync()
         {
             var phoneNumbers = _memoryCache.Get<IEnumerable<List<PhoneNumber>>>(CachePhoneNumberKey);
             var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactDto>>(phoneNumbers);
 
-            return Task.FromResult(CustomResponseDto<List<PhoneNumbersWithContactDto>>.Success(200, phoneNumbersWithContactDto));
+            return Task.FromResult(phoneNumbersWithContactDto);
         }
 
         public async Task RemoveAsync(PhoneNumber entity)

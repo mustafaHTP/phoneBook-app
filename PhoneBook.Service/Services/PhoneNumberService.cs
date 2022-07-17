@@ -12,22 +12,22 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Service.Services
 {
-    public class PhoneNumberServiceWithNoCaching : GenericService<PhoneNumber>, IPhoneNumberService
+    public class PhoneNumberService : GenericService<PhoneNumber>, IPhoneNumberService
     {
         private readonly IPhoneNumberRepository _phoneNumberRepository;
         private readonly IMapper _mapper;
-        public PhoneNumberServiceWithNoCaching(IGenericRepository<PhoneNumber> genericRepository, IUnitOfWork unitOfWork, IPhoneNumberRepository phoneNumberRepository, IMapper mapper) : base(genericRepository, unitOfWork)
+        public PhoneNumberService(IGenericRepository<PhoneNumber> genericRepository, IUnitOfWork unitOfWork, IPhoneNumberRepository phoneNumberRepository, IMapper mapper) : base(genericRepository, unitOfWork)
         {
             _phoneNumberRepository = phoneNumberRepository;
             _mapper = mapper;
         }
 
-        public async Task<CustomResponseDto<List<PhoneNumbersWithContactDto>>> GetPhoneNumbersWihContactAsync()
+        public async Task<List<PhoneNumbersWithContactDto>> GetPhoneNumbersWihContactAsync()
         {
             var phoneNumbersWithContact = await _phoneNumberRepository.GetPhoneNumbersWihContactAsync();
             var phoneNumbersWithContactDto = _mapper.Map<List<PhoneNumbersWithContactDto>>(phoneNumbersWithContact);
 
-            return CustomResponseDto<List<PhoneNumbersWithContactDto>>.Success(200, phoneNumbersWithContactDto);
+            return phoneNumbersWithContactDto;
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<PhoneNumbersWithContactDto>
+
+<table class="table table-stripeed">
+    <thead>
+        <tr>
+        <td>Id</td>
+        <td>PhoneNumber</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        </tr>  
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+            <td>@item.Id</td>
+            <td>@item.PhoneNo</td>
+            <td>@item.Contact.FirstName</td>
+            <td>@item.Contact.LastName</td>
+            </tr>
+        }
+    </tbody>
+   
+</table>
+
