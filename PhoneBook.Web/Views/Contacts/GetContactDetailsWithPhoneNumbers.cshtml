@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "GetContactDetailsWithPhoneNumbers";
+}
+@model ContactWithPhoneNumbersViewModel
+<h1 border="2px solid red">Contact Details</h1>
+
+<style>
+    p{
+        background-color:darkgrey;
+        color:blueviolet;
+        border: 2px solid black;
+        border-radius: 120%;
+
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-2">
+        <p>First Name:</p>
+        <p>   @Model.FirstName</p>
+        <p>Last Name:</p>
+        <p>   @Model.LastName</p>
+        <p>Email:</p>
+        <p>   @Model.Email</p>
+        <p>Profession:</p>
+        <p>   @Model.Profession</p>
+        <p>Address:</p>
+        <p>   @Model.Address</p>
+        <p>Web Address:</p>
+        <p>   @Model.WebAddress</p>
+        <p>Nick Name:</p>
+        <p>   @Model.NickName</p>
+        <p>Phone Numbers:</p>
+        <table>
+            @foreach (var item in Model.PhoneNumbers)
+            {
+                <tr>
+                    <td>@item.PhoneNo</td>
+                </tr>
+            }        
+        </table>
+    </div>
+</div>

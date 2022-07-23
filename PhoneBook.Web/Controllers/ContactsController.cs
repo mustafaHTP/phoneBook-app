@@ -25,6 +25,19 @@ namespace PhoneBook.Web.Controllers
             return View(contactViewModels);
         }
 
+        public async Task<IActionResult> GetContactDetailsWithPhoneNumbers(int id)
+        {
+            var contactWithPhoneNumbersViewModel = await _contactService.GetSingleContactByIdWithPhoneNumbersAsync(id);
+            return View(contactWithPhoneNumbersViewModel);
+        }
+
+        public async Task<IActionResult> GetContactWithPhoneNumbers(int id)
+        {
+            var contactWithPhoneNumbersViewmodel = await _contactService.GetSingleContactByIdWithPhoneNumbersAsync(id);
+            return View(contactWithPhoneNumbersViewmodel);
+        }
+
+
         public async Task<IActionResult> Save()
         {
             return await Task.Run(() =>

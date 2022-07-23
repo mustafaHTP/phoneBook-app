@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "GetContactWithPhoneNumbers";
+}
+@model ContactWithPhoneNumbersViewModel
+<h3>Contact With Phone Numbers</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <td>Id</td>
+        <td>Phone Numbers</td>
+        </tr>  
+    </thead>
+    <tbody>
+        <div style="row">
+            <span style="font-size:2em">@Model.FullName</span>
+        </div>
+        @foreach(var item in Model.PhoneNumbers)
+        {
+            <tr>
+            <td>@item.Id</td>
+            <td>@item.PhoneNo</td>
+            </tr>
+        }
+    </tbody>
+   
+</table>
