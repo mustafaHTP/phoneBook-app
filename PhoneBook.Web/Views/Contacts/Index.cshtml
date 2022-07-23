@@ -12,10 +12,6 @@
         <td>First Name</td>
         <td>Last Name</td>
         <td>Email</td>
-        <td>Profession</td>
-        <td>Address</td>
-        <td>Web Address</td>
-        <td>Nick Name</td>
         <td>Actions</td>
         </tr>  
     </thead>
@@ -27,14 +23,10 @@
             <td>@item.FirstName</td>
             <td>@item.LastName</td>
             <td>@item.Email</td>
-            <td>@item.Profession</td>
-            <td>@item.Address</td>
-            <td>@item.WebAddress</td>
-            <td>@item.NickName</td>
             <td>
-                <a class="btn btn-secondary" asp-controller="Contacts" asp-action="GetContactDetailsWithPhoneNumbers" asp-route-id="@item.Id">Show Details</a>
+                <a class="btn btn-secondary" asp-controller="Contacts" asp-action="GetContactDetailsWithPhoneNumbers" asp-route-id="@item.Id">Details</a>
                 <a class="btn btn-primary" asp-controller="Contacts" asp-action="GetContactWithPhoneNumbers" asp-route-id="@item.Id">Show Phone Numbers</a>
-                <a class="btn btn-warning" asp-controller="Contacts" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                <a class="btn btn-warning" asp-controller="Contacts" asp-action="Update" asp-route-id="@item.Id">Edit</a>
                 <a class="btn btn-danger" asp-controller="Contacts" asp-action="Remove" asp-route-id="@item.Id">Remove</a>
                 </td>
             
