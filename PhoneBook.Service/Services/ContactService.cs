@@ -18,6 +18,16 @@ namespace PhoneBook.Service.Services
             _mapper = mapper;
         }
 
+        public async Task<ContactWithPhoneNumbersViewModel> AddContactWithPhoneNumbersAsync(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel)
+        {
+            
+            var contactWithPhoneNumbers = _mapper.Map<Contact>(contactWithPhoneNumbersViewModel);
+            await _contactRepository.AddContactWithPhoneNumbersAsync(contactWithPhoneNumbers);
+            await _unitOfWork.CommitAsync();
+
+            return contactWithPhoneNumbersViewModel;
+        }
+
         public async Task<ContactWithPhoneNumbersViewModel> GetSingleContactByIdWithPhoneNumbersAsync(int contactId)
         {
             var contactWithPhoneNumbers = await _contactRepository.GetSingleContactByIdWithPhoneNumbersAsync(contactId);

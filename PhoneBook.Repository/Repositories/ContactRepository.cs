@@ -10,6 +10,12 @@ namespace PhoneBook.Repository.Repositories
         {
         }
 
+        public async Task AddContactWithPhoneNumbersAsync(Contact contact)
+        {
+            await _context.PhoneNumbers.AddRangeAsync(contact.PhoneNumbers);
+            await _context.Contacts.AddAsync(contact);
+        }
+
         public async Task<Contact> GetSingleContactByIdWithPhoneNumbersAsync(int contactId)
         {
             return await _context.Contacts.Include(x => x.PhoneNumbers).Where(x => x.Id == contactId).SingleOrDefaultAsync();

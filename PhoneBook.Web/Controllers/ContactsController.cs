@@ -47,12 +47,11 @@ namespace PhoneBook.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(ContactViewModel contactViewModel)
+        public async Task<IActionResult> Save(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel)
         {
             if (ModelState.IsValid)
             {
-                var contact = _mapper.Map<Contact>(contactViewModel);
-                await _contactService.AddAsync(contact);
+                await _contactService.AddContactWithPhoneNumbersAsync(contactWithPhoneNumbersViewModel);
                 return RedirectToAction(nameof(Index));
             }
 

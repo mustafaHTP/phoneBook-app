@@ -1,8 +1,7 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Save";
 }
-@model ContactViewModel
+@model ContactWithPhoneNumbersViewModel
 
 <h1>Save Contact</h1>
 
@@ -15,42 +14,87 @@
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="LastName">Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Email">Email</label>
                 <input asp-for="Email" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Profession">Profession</label>
                 <input asp-for="Profession" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Address">Address</label>
                 <input asp-for="Address" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="WebAddress">Web Address</label>
                 <input asp-for="WebAddress" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="NickName">Nickname</label>
                 <input asp-for="NickName" class="form-control" />
-             </div>
-                
-   
+            </div>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn-primary" />
+                <label asp-for="PhoneNumbers[0].PhoneNo">Phone Number</label>
+                <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-success" id="AddButton" type="button" value="Add Phone Number" />
+            </div>
+
+            <div id="phoneNumberBoxContainer">
+            </div>
+
+            <div class="form-group">
+                <br />
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <br />
             </div>
         </form>
     </div>
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var i = 1;
+            $("#AddButton").click(function() {
+                var div = $("<div />");
+                var value = "";
+
+                var phoneNumberBox = $("<input />").attr("type", "textbox").attr("name", "PhoneNumbers[" + i + "].PhoneNo");
+                phoneNumberBox.val(value);
+
+                var removeButton = $("<input />").attr("type", "button").attr("value", "Remove").attr("class", "btn btn-danger");
+                removeButton.attr("onclick", "RemoveTextBox(this)");
+
+                div.append(removeButton);
+                div.append(phoneNumberBox);
+
+
+                $("#phoneNumberBoxContainer").append(div);
+                ++i;
+
+
+            })
+
+        })
+        function RemoveTextBox(removeButton) {
+            $(removeButton).parent().remove();
+        }
+    </script>
+
+}
 

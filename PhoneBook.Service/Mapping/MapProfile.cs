@@ -11,8 +11,8 @@ namespace PhoneBook.Service.Mapping
             CreateMap<Contact, ContactViewModel>().ReverseMap();
             CreateMap<PhoneNumber, PhoneNumberViewModel>().ReverseMap();
 
-            CreateMap<PhoneNumber, PhoneNumbersWithContactViewModel>();
-            CreateMap<Contact, ContactWithPhoneNumbersViewModel>();
+            CreateMap<PhoneNumber, PhoneNumbersWithContactViewModel>().ReverseMap();
+            CreateMap<Contact, ContactWithPhoneNumbersViewModel>().ReverseMap();
 
         }
     }
