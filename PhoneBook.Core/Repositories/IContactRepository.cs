@@ -6,5 +6,6 @@ namespace PhoneBook.Core.Repositories
     {
         Task<Contact> GetSingleContactByIdWithPhoneNumbersAsync(int contactId);
         Task AddContactWithPhoneNumbersAsync(Contact contact);
+        void UpdateContactWithPhoneNumbers(Contact contact);
     }
 }

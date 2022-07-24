@@ -7,5 +7,6 @@ namespace PhoneBook.Core.Services
     {
         Task<ContactWithPhoneNumbersViewModel> GetSingleContactByIdWithPhoneNumbersAsync(int contactId);
         Task<ContactWithPhoneNumbersViewModel> AddContactWithPhoneNumbersAsync(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel);
+        Task<ContactWithPhoneNumbersViewModel> UpdateContactWithPhoneNumbersAsync(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel);
     }
 }

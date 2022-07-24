@@ -94,5 +94,16 @@ namespace PhoneBook.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> RemoveAfterReturnSamePage(int id)
+        {
+            var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
+            await _phoneNumberService.RemoveAsync(phoneNumber);
+
+            //Get page URL
+            
+
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
     }
 }

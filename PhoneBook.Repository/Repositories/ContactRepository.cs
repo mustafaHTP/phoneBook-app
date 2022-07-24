@@ -20,5 +20,11 @@ namespace PhoneBook.Repository.Repositories
         {
             return await _context.Contacts.Include(x => x.PhoneNumbers).Where(x => x.Id == contactId).SingleOrDefaultAsync();
         }
+
+        public void UpdateContactWithPhoneNumbers(Contact contact)
+        {
+            _context.PhoneNumbers.UpdateRange(contact.PhoneNumbers);
+            _context.Contacts.Update(contact);
+        }
     }
 }

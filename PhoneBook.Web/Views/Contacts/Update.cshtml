@@ -1,10 +1,16 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Update";
 }
-@model ContactViewModel
+@model ContactWithPhoneNumbersViewModel
 
 <h1>Update Contact</h1>
+<style>
+    .input-group {
+       max-length:11;
+       min-length:11;
+       size:11;
+    }
+</style>
 
 <div class="row">
     <div class="col-md-6">
@@ -15,41 +21,95 @@
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="LastName">Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Email">Email</label>
                 <input asp-for="Email" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Profession">Profession</label>
                 <input asp-for="Profession" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Address">Address</label>
                 <input asp-for="Address" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="WebAddress">Web Address</label>
                 <input asp-for="WebAddress" class="form-control" />
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="NickName">Nickname</label>
                 <input asp-for="NickName" class="form-control" />
-             </div>
-                
-   
+            </div>
+
             <div class="form-group">
-                <input type="submit" value="Update" class="btn-primary" />
+                <input type="hidden" asp-for="PhoneNumbers[0].Id" />
+                <label asp-for="PhoneNumbers[0].PhoneNo">Phone Number</label>
+                <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" />
+                @for (int i = 1; i < Model.PhoneNumbers.Count; i++)
+                {
+                    <div class="input-group">
+                        <input type="hidden" asp-for="PhoneNumbers[i].Id" />
+                        <input asp-for="PhoneNumbers[i].PhoneNo" class="form-control" />
+                        <a class="input-group-btn btn btn-danger" asp-controller="PhoneNumbers" asp-action="RemoveAfterReturnSamePage" asp-route-id="@Model.PhoneNumbers[i].Id">Remove</a>
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-success" id="AddButton" type="button" value="Add Phone Number" />
+            </div>
+
+            <div id="phoneNumberBoxContainer">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var i = 1;
+            $("#AddButton").click(function() {
+                var div = $("<div />");
+                div.attr("class", "input-group");
+                var value = "";
+
+                var phoneNumberBox = $("<input />").attr("class", "form-control").attr("name", "PhoneNumbers[" + i + "].PhoneNo");
+                phoneNumberBox.val(value);
+
+                var removeButton = $("<input />").attr("type", "button").attr("value", "Remove").attr("class", "input-group-btn btn btn-danger");
+                removeButton.attr("onclick", "RemoveTextBox(this)");
+
+                div.append(phoneNumberBox);
+                div.append(removeButton);
+
+
+                $("#phoneNumberBoxContainer").append(div);
+                ++i;
+
+
+            })
+
+        })
+        function RemoveTextBox(removeButton) {
+            $(removeButton).parent().remove();
+        }
+    </script>
+
+}

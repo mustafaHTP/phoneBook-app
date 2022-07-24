@@ -61,24 +61,22 @@ namespace PhoneBook.Web.Controllers
         [ServiceFilter(typeof(NotFoundFilter<Contact>))]
         public async Task<IActionResult> Update(int id)
         {
-            var contact = await _contactService.GetByIdAsync(id);
-            var contactViewModel = _mapper.Map<ContactViewModel>(contact);
+            var contactWithPhoneNumbersViewModel = await _contactService.GetSingleContactByIdWithPhoneNumbersAsync(id);
 
-            return View(contactViewModel);
+            return View(contactWithPhoneNumbersViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(ContactViewModel contactViewModel)
+        public async Task<IActionResult> Update(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel)
         {
             if (ModelState.IsValid)
             {
-                var contact = _mapper.Map<Contact>(contactViewModel);
-                await _contactService.UpdateAsync(contact);
+                await _contactService.UpdateContactWithPhoneNumbersAsync(contactWithPhoneNumbersViewModel);
 
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(contactViewModel);
+            return View(contactWithPhoneNumbersViewModel);
         }
 
         [ServiceFilter(typeof(NotFoundFilter<Contact>))]
@@ -89,5 +87,9 @@ namespace PhoneBook.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        
+
+
     }
 }

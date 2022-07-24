@@ -35,5 +35,14 @@ namespace PhoneBook.Service.Services
 
             return contactWithPhoneNumbersDto;
         }
+
+        public async Task<ContactWithPhoneNumbersViewModel> UpdateContactWithPhoneNumbersAsync(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel)
+        {
+            var contactWithPhoneNumbers = _mapper.Map<Contact>(contactWithPhoneNumbersViewModel);
+            _contactRepository.UpdateContactWithPhoneNumbers(contactWithPhoneNumbers);
+            await _unitOfWork.CommitAsync();
+
+            return contactWithPhoneNumbersViewModel;
+        }
     }
 }
