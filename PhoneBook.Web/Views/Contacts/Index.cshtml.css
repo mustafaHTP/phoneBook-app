@@ -1,0 +1,8 @@
+﻿
+.contactsTable tbody tr:nth-child(odd) {
+    background-color: lightgreen;
+}
+
+.contactsTable tbody tr:nth-child(even) {
+    background-color: lightblue;
+}
