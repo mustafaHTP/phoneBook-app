@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Core.DTOs;
 using PhoneBook.Core.Models;
 using PhoneBook.Core.Services;
+using PhoneBook.Service.Services;
 using PhoneBook.Web.Filters;
 
 namespace PhoneBook.Web.Controllers

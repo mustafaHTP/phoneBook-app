@@ -14,9 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 //Validate Filter Attribute
 //Add FluentValidation
 builder.Services.AddControllers()
-    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PhoneNumberDtoValidator>());
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PhoneNumberVMValidator>());
 builder.Services.AddControllers()
-    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ContactDtoValidator>());
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ContactVMValidator>());
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

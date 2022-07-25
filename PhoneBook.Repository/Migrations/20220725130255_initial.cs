@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,11 +17,11 @@ namespace PhoneBook.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Profession = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    WebAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NickName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Profession = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    WebAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    NickName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -54,22 +55,22 @@ namespace PhoneBook.Repository.Migrations
             migrationBuilder.InsertData(
                 table: "Contacts",
                 columns: new[] { "Id", "Address", "CreatedDate", "Email", "FirstName", "LastName", "NickName", "Profession", "UpdatedDate", "WebAddress" },
-                values: new object[] { 1, "Üsküdar/İstanbul", new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8264), "mustafa@outlook.com", "Mustafa", "Hatipoğlu", "mustafa", "Student", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "www.api.com" });
+                values: new object[] { 1, "Üsküdar/İstanbul", new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(7898), "mustafa@outlook.com", "Mustafa", "Hatipoğlu", "mustafa", "Student", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "www.api.com" });
 
             migrationBuilder.InsertData(
                 table: "Contacts",
                 columns: new[] { "Id", "Address", "CreatedDate", "Email", "FirstName", "LastName", "NickName", "Profession", "UpdatedDate", "WebAddress" },
-                values: new object[] { 2, "Ümraniye/İstanbul", new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8278), "ahmet@gmail.com", "Ahmet", "Yılmaz", "ahmet", "Student", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "www.google.com" });
+                values: new object[] { 2, "Ümraniye/İstanbul", new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(7912), "ahmet@gmail.com", "Ahmet", "Yılmaz", "ahmet", "Student", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "www.google.com" });
 
             migrationBuilder.InsertData(
                 table: "PhoneNumbers",
                 columns: new[] { "Id", "ContactId", "CreatedDate", "PhoneNo", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8569), "05386221584", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 1, new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8573), "05384332199", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 2, new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8574), "05406004030", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 2, new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8575), "05332221036", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 1, new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8278), "05386221584", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 1, new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8285), "05384332199", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 2, new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8286), "05406004030", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, 2, new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8287), "05332221036", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(

@@ -31,7 +31,6 @@ namespace PhoneBook.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -39,7 +38,6 @@ namespace PhoneBook.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -54,12 +52,10 @@ namespace PhoneBook.Repository.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("NickName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Profession")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -67,7 +63,6 @@ namespace PhoneBook.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("WebAddress")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -80,7 +75,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 1,
                             Address = "Üsküdar/İstanbul",
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8264),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(7898),
                             Email = "mustafa@outlook.com",
                             FirstName = "Mustafa",
                             LastName = "Hatipoğlu",
@@ -93,7 +88,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 2,
                             Address = "Ümraniye/İstanbul",
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8278),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(7912),
                             Email = "ahmet@gmail.com",
                             FirstName = "Ahmet",
                             LastName = "Yılmaz",
@@ -137,7 +132,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 1,
                             ContactId = 1,
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8569),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8278),
                             PhoneNo = "05386221584",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -145,7 +140,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 2,
                             ContactId = 1,
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8573),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8285),
                             PhoneNo = "05384332199",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -153,7 +148,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 3,
                             ContactId = 2,
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8574),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8286),
                             PhoneNo = "05406004030",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -161,7 +156,7 @@ namespace PhoneBook.Repository.Migrations
                         {
                             Id = 4,
                             ContactId = 2,
-                            CreatedDate = new DateTime(2022, 7, 15, 21, 39, 28, 643, DateTimeKind.Local).AddTicks(8575),
+                            CreatedDate = new DateTime(2022, 7, 25, 16, 2, 54, 946, DateTimeKind.Local).AddTicks(8287),
                             PhoneNo = "05332221036",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
