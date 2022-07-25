@@ -3,64 +3,50 @@
 }
 @model ContactWithPhoneNumbersViewModel
 
-
-<style>
-    
-    dt{
-        font-size:medium;
-        font-style:italic;
-        color:blue;
-    }
-    dd{
-        font-size:medium;
-        margin-left:10px;
-        border-width:2px;
-        border-style:solid;
-        border-radius:2px;
-        background-color:white;
-    }
-
-    .phoneNumbers li{
-        background-color:lawngreen;
-        border:1px dashed black;
-    }
-</style>
-
-<div class="rounded container p-5 mt-5 mb-1 bg-primary bg-gradient text-white">
-  <h1>Details</h1>
+<div class="container rounded p-5 my-3 bg-gradient bg-secondary">
+    <p class="text-center h1">DETAILS</p>
 </div>
 
-<div class="details rounded container bg-warning bg-gradient">
-    <dl>
-        <dt>First Name:</dt>
-        <dd>@Model.FirstName</dd>
+<div class="details row justify-content-center">
+    <div class="col-md-6">
+        <div class="card w-100 rounded bg-info bg-gradient">
 
-        <dt>Last Name:</dt>
-        <dd>@Model.LastName</dd>
+            <div class="card-header p-1">
+                <p class="text-center h3">@Model.FullName</p>
+            </div>
 
-        <dt>Email:</dt>
-        <dd>@Model.Email</dd>
+            <div class="card-body">
+                <dl>
+                    <dt>First Name:</dt>
+                    <dd>@Model.FirstName</dd>
 
-        <dt>Address:</dt>
-        <dd>@Model.Address</dd>
+                    <dt>Last Name:</dt>
+                    <dd>@Model.LastName</dd>
 
-        <dt>Web Address:</dt>
-        <dd>@Model.WebAddress</dd>
+                    <dt>Email:</dt>
+                    <dd>@Model.Email</dd>
 
-        <dt>Nickname:</dt>
-        <dd>@Model.NickName</dd>
+                    <dt>Address:</dt>
+                    <dd>@Model.Address</dd>
 
-        <dt>Phone Numbers:</dt>
-    </dl>
+                    <dt>Web Address:</dt>
+                    <dd>@Model.WebAddress</dd>
 
+                    <dt>Nickname:</dt>
+                    <dd>@Model.NickName</dd>
 
-    <ol class="phoneNumbers">
-        @foreach (var item in Model.PhoneNumbers)
-        {
+                    <dt>Phone Numbers:</dt>
+                </dl>
 
-            <li>@item.PhoneNo</li>
+                <ol class="phoneNumbers">
+                    @foreach (var item in Model.PhoneNumbers)
+                    {
+                        <li>@item.PhoneNo</li>
+                    }
+                </ol>
 
-        }
-    </ol>
+            </div>
 
+        </div>
+    </div>
 </div>
