@@ -16,53 +16,52 @@
                 <form asp-action="Save" method="post" asp-controller="Contacts">
                     <div class="form-group">
                         <label asp-for="FirstName">First Name</label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter the first name... (necessary)" />
+                        <span asp-validation-for="FirstName" class="text-light bg-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="LastName">Last Name</label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <input asp-for="LastName" class="form-control" placeholder="Enter the last name... (necessary)" />
+                        <span asp-validation-for="LastName" class="text-light bg-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="Email">Email</label>
-                        <input asp-for="Email" class="form-control" />
+                        <input asp-for="Email" class="form-control" placeholder="Enter the email... (optional)" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="Profession">Profession</label>
-                        <input asp-for="Profession" class="form-control" />
+                        <input asp-for="Profession" class="form-control" placeholder="Enter the profession... (optional)" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="Address">Address</label>
-                        <input asp-for="Address" class="form-control" />
+                        <input asp-for="Address" class="form-control" placeholder="Enter the address... (optional)" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="WebAddress">Web Address</label>
-                        <input asp-for="WebAddress" class="form-control" />
+                        <input asp-for="WebAddress" class="form-control" placeholder="Enter the web address... (optional)" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="NickName">Nickname</label>
-                        <input asp-for="NickName" class="form-control" />
+                        <input asp-for="NickName" class="form-control" placeholder="Enter the nickname... (optional)" />
                     </div>
 
                     <div class="form-group">
                         <label asp-for="PhoneNumbers[0].PhoneNo">Phone Number</label>
 
                         <div class="input-group">
-                            <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" />
-                            <span asp-validation-for="PhoneNumbers[0].PhoneNo" class="text-danger"></span>
-
+                            <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" placeholder="Enter the phone number... (optional)" />
                             <button class="input-group-btn btn btn-success" id="AddButton" type="button">
                                 <i class="bi bi-plus-circle"></i>
                                 Phone Number
                             </button>
                         </div>
+                        <span asp-validation-for="PhoneNumbers[0].PhoneNo" class="text-white bg-danger"></span>
                     </div>
 
                     <div id="phoneNumberBoxContainer">
@@ -91,7 +90,8 @@
                 div.attr("class", "input-group my-1");
                 var value = "";
 
-                var phoneNumberBox = $("<input />").attr("class", "form-control").attr("name", "PhoneNumbers[" + i + "].PhoneNo");
+                var phoneNumberBox = $("<input />").attr("class", "form-control").attr("name", "PhoneNumbers[" + i + "].PhoneNo")
+                    .attr("placeholder", "\"Enter the phone number... (optional)\"");
                 phoneNumberBox.val(value);
 
                 var buttonIcon = $("<i />");
@@ -107,7 +107,6 @@
 
                 div.append(phoneNumberBox);
                 div.append(removeButton);
-
 
                 $("#phoneNumberBoxContainer").append(div);
                 ++i;
