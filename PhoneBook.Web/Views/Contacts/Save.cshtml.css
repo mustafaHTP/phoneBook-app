@@ -1,0 +1,5 @@
+﻿.input-group {
+    max-length: 11;
+    min-length: 11;
+    size: 11;
+}

@@ -3,67 +3,84 @@
 }
 @model ContactWithPhoneNumbersViewModel
 
-<h1>Save Contact</h1>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-<div class="row">
+<div class="container rounded p-5 my-3 bg-gradient bg-success">
+    <p class="text-center h1">Create Contact</p>
+</div>
+
+<div class="row justify-content-center">
     <div class="col-md-6">
-        <form asp-action="Save" method="post" asp-controller="Contacts">
-            <div class="form-group">
-                <label asp-for="FirstName">First Name</label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+        <div class="card card w-100 rounded bg-gradient bg-info">
+            <div class="card-body">
+                <form asp-action="Save" method="post" asp-controller="Contacts">
+                    <div class="form-group">
+                        <label asp-for="FirstName">First Name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LastName">Last Name</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Profession">Profession</label>
+                        <input asp-for="Profession" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Address">Address</label>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="WebAddress">Web Address</label>
+                        <input asp-for="WebAddress" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NickName">Nickname</label>
+                        <input asp-for="NickName" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PhoneNumbers[0].PhoneNo">Phone Number</label>
+                        <div class="input-group">
+                        <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" />
+                        <span asp-validation-for="PhoneNumbers[0].PhoneNo" class="text-danger"></span>
+
+                        <button class="input-group-btn btn btn-success" id="AddButton" type="button">
+                            <i class="bi bi-plus-circle"></i>
+                            Phone Number
+                        </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+
+                    <div id="phoneNumberBoxContainer">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check2-square"></i>
+                            Create Account
+                            </button>
+                    </div>
+                </form>
+
             </div>
 
-            <div class="form-group">
-                <label asp-for="LastName">Last Name</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Email">Email</label>
-                <input asp-for="Email" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Profession">Profession</label>
-                <input asp-for="Profession" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Address">Address</label>
-                <input asp-for="Address" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="WebAddress">Web Address</label>
-                <input asp-for="WebAddress" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="NickName">Nickname</label>
-                <input asp-for="NickName" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PhoneNumbers[0].PhoneNo">Phone Number</label>
-                <input asp-for="PhoneNumbers[0].PhoneNo" class="form-control" />
-                <span asp-validation-for="PhoneNumbers[0].PhoneNo" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input class="btn btn-success" id="AddButton" type="button" value="Add Phone Number" />
-            </div>
-
-            <div id="phoneNumberBoxContainer">
-            </div>
-
-            <div class="form-group">
-                <br />
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <br />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -73,16 +90,25 @@
             var i = 1;
             $("#AddButton").click(function() {
                 var div = $("<div />");
+                div.attr("class", "input-group my-1");
                 var value = "";
 
-                var phoneNumberBox = $("<input />").attr("type", "textbox").attr("name", "PhoneNumbers[" + i + "].PhoneNo");
+                var phoneNumberBox = $("<input />").attr("class", "form-control").attr("name", "PhoneNumbers[" + i + "].PhoneNo");
                 phoneNumberBox.val(value);
 
-                var removeButton = $("<input />").attr("type", "button").attr("value", "Remove").attr("class", "btn btn-danger");
-                removeButton.attr("onclick", "RemoveTextBox(this)");
+                var buttonIcon = $("<i />");
+                buttonIcon.attr("class", "bi bi-trash");
+                var buttonText = $("<span />");
+                buttonText.text("Remove");
 
-                div.append(removeButton);
+                var removeButton = $("<button />").attr("type", "button").attr("class", "input-group-btn btn btn-danger");
+                removeButton.attr("onclick", "RemoveTextBox(this)");
+                removeButton.append(buttonIcon);
+                removeButton.append(buttonText);
+
+                
                 div.append(phoneNumberBox);
+                div.append(removeButton);
 
 
                 $("#phoneNumberBoxContainer").append(div);
