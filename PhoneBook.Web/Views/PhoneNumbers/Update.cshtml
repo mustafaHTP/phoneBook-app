@@ -1,27 +1,39 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Update";
 }
 @model PhoneNumberViewModel
-<h1>Update Phone Number</h1>
 
-<div class="row">
-    <div class="col-md-7">
-        <form asp-action="Update" method="post" asp-controller="PhoneNumbers">
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="PhoneNo"></label>
-                <input asp-for="PhoneNo" class="form-control" />
-                <span asp-validation-for="PhoneNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactId"></label>
-                <select asp-for="ContactId" asp-items="ViewBag.Contacts" class="form-control"></select>
-            </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn-primary" />
+<div class="container rounded p-5 my-3 bg-gradient bg-warning text-white">
+    <p class="text-center h1">Edit Phone Number</p>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card w-150 rounded bg-gradient bg-primary">
+            <div class="card-body">
+                <form asp-action="Update" method="post" asp-controller="PhoneNumbers">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label class="text-white" asp-for="PhoneNo">Phone Number</label>
+                        <input asp-for="PhoneNo" class="form-control" placeholder="Enter the phone number..."/>
+                        <span asp-validation-for="PhoneNo" class="text-white bg-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-white" asp-for="ContactId">Contacts</label>
+                        <select asp-for="ContactId" asp-items="ViewBag.Contacts" class="form-control"></select>
+                        <span asp-validation-for="ContactId" class="text-white bg-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" value="Update" class="btn btn-success my-1">
+                            <i class="bi bi-check2-all"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+
             </div>
-        </form>
+        </div>
     </div>
 </div>
