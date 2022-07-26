@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhoneBook.Core.Models;
 using PhoneBook.Core.Repositories;
+using System.Linq.Expressions;
 
 namespace PhoneBook.Repository.Repositories
 {
@@ -19,6 +20,11 @@ namespace PhoneBook.Repository.Repositories
         public async Task<Contact> GetSingleContactByIdWithPhoneNumbersAsync(int contactId)
         {
             return await _context.Contacts.Include(x => x.PhoneNumbers).Where(x => x.Id == contactId).SingleOrDefaultAsync();
+        }
+
+        public async Task<List<Contact>> SearchAsync(string queryString)
+        {
+            return await _context.Contacts.AsNoTracking().Where(x=>x.FirstName.Contains(queryString) || x.LastName.Contains(queryString)).OrderBy(x => x.FirstName).ToListAsync();
         }
 
         public void UpdateContactWithPhoneNumbers(Contact contact)

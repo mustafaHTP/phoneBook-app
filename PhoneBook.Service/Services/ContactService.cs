@@ -36,6 +36,13 @@ namespace PhoneBook.Service.Services
             return contactWithPhoneNumbersDto;
         }
 
+        public async Task<List<ContactViewModel>> SearchAsync(string queryString)
+        {
+            var contacts = await _contactRepository.SearchAsync(queryString);
+            var contactViewModels = _mapper.Map<List<ContactViewModel>>(contacts);
+            return contactViewModels;
+        }
+
         public async Task<ContactWithPhoneNumbersViewModel> UpdateContactWithPhoneNumbersAsync(ContactWithPhoneNumbersViewModel contactWithPhoneNumbersViewModel)
         {
             var contactWithPhoneNumbers = _mapper.Map<Contact>(contactWithPhoneNumbersViewModel);

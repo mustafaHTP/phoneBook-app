@@ -87,6 +87,7 @@ namespace PhoneBook.Web.Controllers
             return View(phoneNumberDto);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<PhoneNumber>))]
         public async Task<IActionResult> Remove(int id)
         {
             var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
@@ -99,9 +100,6 @@ namespace PhoneBook.Web.Controllers
         {
             var phoneNumber = await _phoneNumberService.GetByIdAsync(id);
             await _phoneNumberService.RemoveAsync(phoneNumber);
-
-            //Get page URL
-            
 
             return Redirect(Request.Headers["Referer"].ToString());
         }

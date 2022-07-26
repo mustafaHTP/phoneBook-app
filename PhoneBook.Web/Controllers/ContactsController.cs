@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Core.DTOs;
 using PhoneBook.Core.Models;
 using PhoneBook.Core.Services;
+using PhoneBook.Core.ViewModels;
 using PhoneBook.Service.Services;
 using PhoneBook.Web.Filters;
 
@@ -25,6 +26,31 @@ namespace PhoneBook.Web.Controllers
             var contactViewModels = _mapper.Map<List<ContactViewModel>>(contacts);
             return View(contactViewModels);
         }
+
+        public IActionResult Search()
+        {
+            return View("SearchEmpty");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(MyQueryStringViewModel searchString)
+        {
+            if (searchString.QueryString != null)
+            {
+                MyQueryStringWithContactsViewModel myQueryStringWithContactsViewModel = new MyQueryStringWithContactsViewModel();
+                var contactViewModels = await _contactService.SearchAsync(searchString.QueryString);
+
+                myQueryStringWithContactsViewModel.ContactViewModels = contactViewModels;
+
+                
+                return View("SearchGetResults", myQueryStringWithContactsViewModel);
+            }
+            else
+            {
+                return View("SearchEmpty");
+            }
+        }
+
 
         public async Task<IActionResult> GetContactDetailsWithPhoneNumbers(int id)
         {
