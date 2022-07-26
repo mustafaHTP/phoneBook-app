@@ -4,12 +4,16 @@
 }
 @model List<PhoneNumbersWithContactViewModel>
 
-<td><a class="btn btn-success" asp-controller="PhoneNumbers" asp-action="Save">Add Phone Number</a></td>
-<table class="table table-striped">
-    <thead>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+<a class="btn btn-success my-1" asp-controller="PhoneNumbers" asp-action="Save">
+    <i class="bi bi-telephone-plus-fill"></i>
+    Add Phone Number</a>
+<table class="phoneNumberTable table table-striped">
+    <thead class="table-dark">
         <tr>
         <td>Id</td>
-        <td>PhoneNumber</td>
+        <td>Phone Number</td>
         <td>First Name</td>
         <td>Last Name</td>
         <td>Actions</td>
@@ -23,8 +27,12 @@
             <td>@item.PhoneNo</td>
             <td>@item.Contact.FirstName</td>
             <td>@item.Contact.LastName</td>
-            <td><a class="btn btn-warning" asp-controller="PhoneNumbers" asp-action="Update" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-danger" asp-controller="PhoneNumbers" asp-action="Remove" asp-route-id="@item.Id">Remove</a>
+            <td><a class="btn btn-warning" asp-controller="PhoneNumbers" asp-action="Update" asp-route-id="@item.Id">
+                <i class="bi bi-pencil-fill"></i>
+                Edit</a>
+                <a class="btn btn-danger" asp-controller="PhoneNumbers" asp-action="Remove" asp-route-id="@item.Id">
+                    <i class="bi bi-trash-fill"></i>
+                    Remove</a>
                 </td>
             </tr>
         }

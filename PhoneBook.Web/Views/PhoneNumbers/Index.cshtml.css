@@ -1,0 +1,8 @@
+﻿
+.phoneNumberTable tbody tr:nth-child(odd) {
+    background-color: lightgreen;
+}
+
+.phoneNumberTable tbody tr:nth-child(even) {
+    background-color: lightblue;
+}
