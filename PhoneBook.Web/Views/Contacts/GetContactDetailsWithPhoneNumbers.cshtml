@@ -23,17 +23,31 @@
                     <dt>Last Name:</dt>
                     <dd>@Model.LastName</dd>
 
+                    @if(@Model.Email != null)
+                    {
                     <dt>Email:</dt>
                     <dd>@Model.Email</dd>
+                        
+                    }
 
+                    @if(@Model.Address != null)
+                    {
                     <dt>Address:</dt>
                     <dd>@Model.Address</dd>
+                        
+                    }
 
-                    <dt>Web Address:</dt>
-                    <dd>@Model.WebAddress</dd>
+                    @if (@Model.WebAddress != null)
+                    {
+                        <dt>Web Address:</dt>
+                        <dd>@Model.WebAddress</dd>
+                    }
 
-                    <dt>Nickname:</dt>
-                    <dd>@Model.NickName</dd>
+                    @if (@Model.NickName != null)
+                    {
+                        <dt>Nickname:</dt>
+                        <dd>@Model.NickName</dd>
+                    }
 
                     <dt>Phone Numbers:</dt>
                 </dl>
