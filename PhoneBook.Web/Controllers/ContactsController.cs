@@ -37,13 +37,11 @@ namespace PhoneBook.Web.Controllers
         {
             if (searchString.QueryString != null)
             {
-                MyQueryStringWithContactsViewModel myQueryStringWithContactsViewModel = new MyQueryStringWithContactsViewModel();
                 var contactViewModels = await _contactService.SearchAsync(searchString.QueryString);
 
-                myQueryStringWithContactsViewModel.ContactViewModels = contactViewModels;
+                ViewBag.ContactViewModels = contactViewModels;
 
-                
-                return View("SearchGetResults", myQueryStringWithContactsViewModel);
+                return View("SearchGetResults");
             }
             else
             {

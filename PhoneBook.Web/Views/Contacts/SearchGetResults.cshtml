@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "SearchGetResults";
 }
-@model MyQueryStringWithContactsViewModel
+@model MyQueryStringViewModel
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 <div class="container p-1 my-2 rounded bg-dark bg-gradient text-white">
     <form asp-controller="Contacts" asp-action="Search" method="post">
     <div class="form-group input-group rounded p-1 bg-dark text-white">
-        <input class="form-control border border-2 border-info bg-dark text-white" asp-for="@Model.MyQueryViewModel"/>
+        <input class="form-control border border-2 border-info bg-dark text-white" asp-for="@Model.QueryString"/>
         <button class="btn btn-outline-info border border-1 border-info" type="submit">
             <i class="bi bi-search"></i>
             <span class="text-white">Search</span>
@@ -29,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.ContactViewModels)
+        @foreach (var item in ViewBag.ContactViewModels)
         {
             <tr>
                 <td>@item.Id</td>
