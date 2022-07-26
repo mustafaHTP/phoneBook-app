@@ -7,7 +7,8 @@ namespace PhoneBook.Service.Validations
     {
         public PhoneNumberVMValidator()
         {
-            RuleFor(x => x.PhoneNo).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required").Must(x => x.Length == 11).WithMessage("Phone number length must be 11 character");
+            RuleFor(x => x.PhoneNo).NotEmpty().WithMessage("Phone Number cannot be empty!").Must(x => x.Length == 11 ).When(x=> !string.IsNullOrEmpty(x.PhoneNo)).WithMessage("Phone Number length must equal to 11!");
+            RuleFor(x => x.ContactId).NotEmpty().WithMessage("You must choose Contact!");
         }
     }
 }

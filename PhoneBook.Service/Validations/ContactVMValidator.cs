@@ -8,8 +8,8 @@ namespace PhoneBook.Service.Validations
     {
         public ContactVMValidator()
         {
-            RuleFor(x => x.FirstName).NotEmpty().WithMessage("{PropertyName} is required");
-            RuleFor(x => x.LastName).NotEmpty().WithMessage("{PropertyName} is required");
+            RuleFor(x => x.FirstName).NotEmpty().WithMessage("First Name is required!");
+            RuleFor(x => x.LastName).NotEmpty().WithMessage("Last Name is required!");
         }
 
         
